@@ -1,0 +1,26 @@
+@startuml
+title Onderdeel B Proces & Wildcard Beslisboom - Kat of Hond (Liner.ai EfficientNet)
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+
+start
+:<b>US 1 (Jira AI-1 - Nick & Team)</b>\nDataset verzamelen: 50+ Hond, 50+ Kat, 50+ Overig\n(variatie in ras, hoek, licht en achtergrond);
+
+:<b>US 2 (Jira AI-2 - Harsha HK)</b>\nHandmatige kwaliteitscontrole, opschonen & labelen:\n- Dubbele/wazige beelden verwijderen\n- AVG check (geen privegezichten)\n- Trainingsdata en Testset (30+) strikt gescheiden houden (Data at Rest);
+
+:<b>US 3 (Jira AI-3 - Giovanni & Team)</b>\nTransfer Learning in Liner.ai met <b>EfficientNet</b>\nTraining loss daalt van 0.44 (stap 27) naar ~0.00 (stap 632)\nInterne validatiescore: 100.00%;
+
+:<b>US 4, US 5 & US 6 (Jira AI-4 t/m AI-6 - Samen)</b>\nKritisch testen op ongeziene beelden & 6 foutenpatroon-experimenten:\n- Standaard & voorwerpen: ~90%\n- Verstopte dieren: 99.96%\n- Hond + Kat samen: 75/25 en 50/50 (single-label grens!)\n- AI-hybride: 60/35 twijfel vs. 99% bij duidelijke kopvorm\n- Achtergrond-bias test (kat op groen gras: 64%);
+
+:<b>US 7 & US 8 (Jira AI-7 & AI-8 - Harsha HK & Nick)</b>\nGerichte modelverbetering: lastige achtergronden en randgevallen\ntoegevoegd aan dataset -> Zekerheid stijgt van ~90% naar ~98%!;
+
+:<b>US 9 & Wildcard US 10 (Jira AI-9 + Harsha Eigen Experiment)</b>\nModel exporteren naar Python + Softmax drempelwaarde-check;
+
+if (Hoogste klasse-kans >= 75% EN marge >= 20%?) then (Ja, voldoende zeker)
+  :<b>GEACCEPTEERD</b>\nToon voorspeld label (Hond / Kat / Overig)\nmet gemeten percentage;
+else (Nee, bijv. 50/50 samen of 60/35 hybride)
+  :<b>TWIJFELGEVAL GEDETECTEERD</b>\nGeef melding: "Onzeker - controleer handmatig"\n(voorkomt schijnzekerheid bij eindgebruiker);
+endif
+
+stop
+@enduml

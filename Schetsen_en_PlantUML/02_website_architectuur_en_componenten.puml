@@ -1,0 +1,44 @@
+@startuml
+title Technische Architectuur - Project 2 Infographic & AI-Onderzoekswebsite (Harsha Kanaparthi)
+left to right direction
+skinparam componentStyle rectangle
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+
+actor "Bezoeker\n(Coach / Medestudent / 200% Zoom)" as User
+
+package "Lokale Statische Website (Geen externe CDN's of trackers)" {
+  [index.html\nSemantische HTML5\nOnderdeel A + Onderdeel B + Bronnen] as HTML
+
+  package "styles.css (Toegankelijke Vormgeving)" {
+    [CSS Variabelen\nLicht & Donker Thema\nWCAG AA+ Contrast] as ThemeCSS
+    [Responsive CSS Grid\nminmax(min(100%, ...), 1fr)\n320px t/m 1440px + 200% Zoom] as GridCSS
+    [@media print\nFysieke Tribe-Poster Modus] as PrintCSS
+  }
+
+  package "script.js (Vanilla JavaScript Modules)" {
+    [Jargon-hulp & Begrippen\n(Verwerkt uit Post-it feedback)] as JargonJS
+    [Toegankelijke Tabbladen\nStap 1 t/m Stap 6 (ARIA + Pijltoetsen)] as TabsJS
+    [Liner.ai Test- & 75% Drempel\nSimulator (Tests 1-6 + Wildcard)] as SimJS
+    [Jira User Story Filter\n(Harsha HK / Giovanni GL / Nick NB)] as FilterJS
+  }
+
+  package "assets/ (Lokale Bewijsbestanden)" {
+    [Liner.ai Screenshots\nLoss-curve, Metrics & Hybrides] as ImgLiner
+    [Jira Kanban-bord\nai-project2.atlassian.net] as ImgJira
+    [3 Post-it Feedbackfoto's\nTribe Presentatie] as ImgPostit
+  }
+}
+
+User --> HTML : Opent in browser of mobiel
+HTML --> ThemeCSS : Laadt kleurstijl
+HTML --> GridCSS : Schaling zonder horizontale scroll
+HTML --> PrintCSS : Printen voor tribe-show (24 sep)
+HTML --> JargonJS : Schakelt vaktaal-uitleg in/uit
+HTML --> TabsJS : Wisselt onderzoeksstappen A
+HTML --> SimJS : Berekeningen drempelwaarde B
+HTML --> FilterJS : Filtert taken AI-1 t/m AI-9
+HTML --> ImgLiner : Toont modelbewijs
+HTML --> ImgJira : Toont sprintplanning
+HTML --> ImgPostit : Toont ontvangen feedback
+@enduml

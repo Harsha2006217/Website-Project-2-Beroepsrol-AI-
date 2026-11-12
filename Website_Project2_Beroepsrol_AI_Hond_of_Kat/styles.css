@@ -1,0 +1,1006 @@
+/* ==========================================================================
+   Bestand: styles.css
+   Project: Open-ICT Semester 1 - Project 2: Beroepsrollen (Onderdeel A & B)
+   Beroepsrol: Artificial Intelligence (AI) Engineer - "Kat of Hond?" (Liner.ai)
+   Auteur: Harsha Vardhan Kanaparthi (Team Onderdeel B: Harsha, Giovanni, Nick)
+   Datum: September 2026
+
+   Toelichting op mijn CSS-keuzes:
+   1. Toegankelijkheid & 200% zoom: Ik gebruik rem-eenheden, flexibele grids met
+      minmax(min(100%, ...), 1fr) en overflow-wrap: break-word. Daardoor breekt
+      de lay-out niet op smalle schermen (320px) of wanneer iemand in de browser
+      inzoomt tot 200%.
+   2. Gelaagde opbouw (verwerking van presentatiefeedback): Tijdens onze demo
+      kregen we op post-its terug dat er soms te veel theoretische tekst tegelijk
+      zichtbaar was. Daarom zet ik de 8 kernblokken van de infographic bovenaan
+      in een rustig kaartenoverzicht, en werk ik verdieping (Stap 1-6 en US 1-10)
+      uit met duidelijke tabbladen en een in- en uitschakelbare Jargon-hulp.
+   3. Geen externe frameworks of webfonts: Alles draait lokaal zonder netwerk-
+      verzoeken (goed voor snelheid, privacy en duurzame energie).
+   ========================================================================== */
+
+/* --- 1. CSS-variabelen voor kleuren, typografie en witruimte (Licht thema) --- */
+:root {
+  --bg-page: #f5f7fb;
+  --bg-surface: #ffffff;
+  --bg-subtle: #edf2f9;
+  --bg-accent-soft: #e6f4f1;
+  --bg-warning-soft: #fff6e5;
+  --bg-code: #0f172a;
+
+  --text-main: #142033;
+  --text-muted: #475569;
+  --text-on-dark: #f8fafc;
+
+  /* Kleuren met gecontroleerd WCAG AA+ contrast (>= 4.5:1 op wit) */
+  --primary: #0f4c81;        /* Diep HU-blauw */
+  --primary-hover: #0b3961;
+  --accent-teal: #0b6e63;    /* AI-groenblauw voor positieve metrics */
+  --accent-amber: #9a5200;   /* Warm oranje-bruin voor waarschuwing/twijfel */
+  --accent-purple: #5b3cc4;  /* Paars accent voor Wildcard & innovatie */
+  --danger: #b42318;
+
+  --border-color: #cbd5e1;
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 22px rgba(15, 23, 42, 0.09);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.85rem;
+  --radius-lg: 1.15rem;
+
+  --container-max: 76rem; /* 1216px bij standaard 16px lettergrootte */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* --- Donkere modus variabelen (wordt geactiveerd via data-theme="dark" op html) --- */
+html[data-theme="dark"] {
+  --bg-page: #0b1220;
+  --bg-surface: #131e32;
+  --bg-subtle: #1c2a44;
+  --bg-accent-soft: #123534;
+  --bg-warning-soft: #362812;
+  --bg-code: #070c16;
+
+  --text-main: #f1f5f9;
+  --text-muted: #cbd5e1;
+  --text-on-dark: #f8fafc;
+
+  --primary: #60a5fa;
+  --primary-hover: #93c5fd;
+  --accent-teal: #34d399;
+  --accent-amber: #fbbf24;
+  --accent-purple: #a78bfa;
+  --danger: #f87171;
+
+  --border-color: #334155;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* --- 2. Basisreset & algemene leesbaarheid --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; /* Respecteert de standaard lettergrootte en zoom van de gebruiker */
+  scroll-padding-top: 7.5rem; /* Zorgt dat de vaste bovenbalk nooit over een sectietitel valt bij ankerlinks of 200% zoom */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden; /* Extra vangnet tegen onbedoelde horizontale uitloop */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+a {
+  color: var(--primary);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Duidelijke focus-ring voor toetsenbordgebruikers (onderdeel van Toegankelijkheid) */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+/* --- Skip-link voor schermlezers en toetsenbordnavigatie --- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* --- 3. Container & Sectie-opbouw --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+.section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-alt {
+  background-color: var(--bg-subtle);
+}
+
+.section-header {
+  max-width: 52rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-teal);
+  background: var(--bg-accent-soft);
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  margin-top: 0;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 3.6vw, 2.65rem);
+  margin-bottom: 0.85rem;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  margin-bottom: 0.65rem;
+}
+
+h3 {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow-wrap: break-word;
+}
+
+/* --- 4. Bovenbalk & Navigatie (blijft compact, ook bij 200% zoom) --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding-block: 0.75rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.55rem;
+  background: linear-gradient(135deg, #0f4c81, #0b6e63);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.nav-toggle {
+  display: none;
+  background: var(--bg-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.35rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.45rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  background-color: var(--bg-subtle);
+  color: var(--primary);
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn-utility {
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.7rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-utility:hover {
+  border-color: var(--primary);
+}
+
+.btn-utility[aria-pressed="true"] {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+/* Op kleinere schermen (of bij 200% zoom op een laptop = ~640px/720px) klapt menu in */
+@media (max-width: 920px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .main-nav a {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+  }
+}
+
+/* --- 5. Hero-sectie --- */
+.hero {
+  padding-block: clamp(2rem, 4.5vw, 3.5rem);
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-subtle) 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.hero-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.94rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .btn-primary {
+  color: #0b1220;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+}
+
+.hero-summary-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  box-shadow: var(--shadow-md);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.kpi-box {
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  border-left: 4px solid var(--primary);
+}
+
+.kpi-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.kpi-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* --- 6. Jargon-hulp uitlegblokjes (zichtbaar wanneer Jargon-modus aan staat) --- */
+.jargon-banner {
+  display: none;
+  background-color: var(--bg-accent-soft);
+  border: 1px solid var(--accent-teal);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+}
+
+body.jargon-mode .jargon-banner {
+  display: block;
+}
+
+.jargon-note {
+  display: none;
+  margin-top: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  background-color: var(--bg-accent-soft);
+  border-left: 3px solid var(--accent-teal);
+  border-radius: 0.35rem;
+  font-size: 0.86rem;
+  color: var(--text-main);
+}
+
+body.jargon-mode .jargon-note {
+  display: block;
+}
+
+.term-chip {
+  background: none;
+  border: none;
+  border-bottom: 2px dashed var(--accent-teal);
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  padding: 0 0.1rem;
+  cursor: pointer;
+}
+
+.term-popover {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--accent-teal);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- 7. Onderdeel A: De 8 Infographic-blokken ("Begin with the end in mind") --- */
+.infographic-board {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  box-shadow: var(--shadow-md);
+}
+
+.infographic-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.infographic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+  gap: 1.1rem;
+}
+
+.info-card {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Voorkomt uitrekken in CSS Grid bij lange woorden */
+}
+
+.info-card.card-teal { border-top-color: var(--accent-teal); }
+.info-card.card-amber { border-top-color: var(--accent-amber); }
+.info-card.card-purple { border-top-color: var(--accent-purple); }
+
+.info-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.compact-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.92rem;
+}
+
+.compact-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* Visuele mini-roadmap binnen het infographic-blok */
+.roadmap-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.roadmap-steps li {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.65rem;
+  font-size: 0.87rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 999px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+html[data-theme="dark"] .step-num {
+  color: #0b1220;
+}
+
+/* --- 8. Tabbladen voor Stap 1 t/m Stap 6 (Onderdeel A verdieping) --- */
+.tabs-wrapper {
+  margin-top: 2rem;
+}
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab-btn[aria-selected="true"] {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+html[data-theme="dark"] .tab-btn[aria-selected="true"] {
+  color: #0b1220;
+}
+
+.tab-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+/* --- 9. Tabellen die altijd netjes binnen het scherm blijven --- */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  margin-block: 0.85rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 34rem;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  overflow-wrap: break-word;
+}
+
+th {
+  background-color: var(--bg-subtle);
+  font-weight: 700;
+}
+
+/* --- 10. Onderdeel B: Interactieve Liner.ai Test- & Drempelwaarde-Simulator --- */
+.simulator-box {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.1rem, 2.5vw, 1.75rem);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.scenario-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.scenario-btn {
+  text-align: left;
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scenario-btn.is-active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+html[data-theme="dark"] .scenario-btn.is-active {
+  color: #0b1220;
+}
+
+.threshold-control {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+}
+
+.threshold-control label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+}
+
+.threshold-control input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.sim-output {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+}
+
+.prob-row {
+  margin-bottom: 0.75rem;
+}
+
+.prob-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.prob-track {
+  width: 100%;
+  height: 0.85rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.prob-fill {
+  height: 100%;
+  background-color: var(--primary);
+  transition: width 0.25s ease;
+}
+
+.prob-fill.cat { background-color: var(--accent-teal); }
+.prob-fill.other { background-color: var(--accent-purple); }
+
+.decision-banner {
+  margin-top: 1rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.decision-banner.confident {
+  background-color: var(--bg-accent-soft);
+  border-left: 4px solid var(--accent-teal);
+}
+
+.decision-banner.uncertain {
+  background-color: var(--bg-warning-soft);
+  border-left: 4px solid var(--accent-amber);
+}
+
+/* --- 11. Bewijsgalerij & User Story kaarten --- */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1.15rem;
+  margin-block: 1.5rem;
+}
+
+.evidence-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.9rem;
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+}
+
+.evidence-card figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.15rem;
+}
+
+.filter-btn {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.38rem 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn.is-active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+html[data-theme="dark"] .filter-btn.is-active {
+  color: #0b1220;
+}
+
+.us-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18.5rem), 1fr));
+  gap: 1rem;
+}
+
+.us-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.us-card[hidden] {
+  display: none;
+}
+
+.us-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.badge-jira {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.badge-owner {
+  background-color: var(--bg-accent-soft);
+  color: var(--accent-teal);
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.3rem;
+}
+
+/* --- 12. Wildcard User Story blok & Codevoorbeeld --- */
+.wildcard-panel {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--accent-purple);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.1rem, 2.5vw, 1.75rem);
+  margin-top: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.code-block {
+  background-color: var(--bg-code);
+  color: var(--text-on-dark);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  max-width: 100%;
+  line-height: 1.5;
+}
+
+/* --- 13. 5 Essentiële ICT-waarden & Team/Feedback --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+}
+
+.value-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--accent-teal);
+  border-radius: var(--radius-md);
+  padding: 1.05rem;
+  min-width: 0;
+}
+
+.postit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.postit-note {
+  background-color: #fef3c7;
+  color: #1e293b;
+  border: 1px solid #f59e0b;
+  border-radius: 0.4rem;
+  padding: 0.85rem;
+  font-size: 0.88rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+}
+
+.postit-note.blue {
+  background-color: #dbeafe;
+  border-color: #60a5fa;
+}
+
+.postit-note.green {
+  background-color: #dcfce7;
+  border-color: #4ade80;
+}
+
+.postit-note.pink {
+  background-color: #fce7f3;
+  border-color: #f472b6;
+}
+
+/* --- 14. Footer (met minmax(0, 1fr) zodat lange URLs nooit overflow geven!) --- */
+.site-footer {
+  background-color: var(--bg-surface);
+  border-top: 2px solid var(--border-color);
+  padding-block: 2.25rem;
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.5rem;
+}
+
+.footer-col {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* --- 15. Print-stijl: zodat de infographic netjes op papier/PDF mee kan naar de tribe --- */
+@media print {
+  .site-header,
+  .hero-cta-group,
+  .filter-bar,
+  .tablist,
+  .skip-link {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .tab-panel[hidden] {
+    display: block !important;
+    margin-bottom: 1rem;
+  }
+
+  .section {
+    padding-block: 1rem;
+    break-inside: avoid;
+  }
+}

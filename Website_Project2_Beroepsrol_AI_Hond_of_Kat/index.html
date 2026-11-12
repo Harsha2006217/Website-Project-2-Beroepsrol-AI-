@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <!--
+    Bestand: index.html
+    Project: HU Open-ICT Semester 1 - Project 2: Beroepsrollen (Onderdeel A & B)
+    Gekozen beroepsrol: Artificial Intelligence (AI) Engineer
+    Beroepsrolopdracht: "AI ontdekken: kat of hond?" (met Liner.ai & EfficientNet)
+    Student: Harsha Vardhan Kanaparthi (HK)
+    Team Onderdeel B: Harsha Kanaparthi (HK), Giovanni (GL) en Nick (NB)
+    Sprintperiode: September 2026 (2-weekse sprint, deadline tribe-show 24 september)
+
+    Waarom ik voor een interactieve infographic-website heb gekozen:
+    In de opdracht van Onderdeel A staat dat je zelf mag kiezen waarin je de
+    infographic vormgeeft (papier, Miro, Figma of een zelfgebouwde website).
+    Omdat ik in Project 1 al een toegankelijke profielpagina in HTML/CSS/JS bouwde,
+    wilde ik in Project 2 laten zien hoe ik zowel een overzichtelijke beroepsrol-
+    infographic als een interactieve demo van ons Liner.ai beeldherkenningsmodel
+    in één foutloze, toegankelijke website combineer.
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Interactieve beroepsrol-infographic (Artificial Intelligence Engineer) en onderzoeksportal voor Kat of Hond beeldherkenning in Liner.ai door Harsha Kanaparthi - HU Open-ICT Project 2."
+  />
+  <title>Project 2: Beroepsrol AI Engineer &amp; Kat of Hond? | Harsha Kanaparthi</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Skip-link zodat toetsenbord- en schermlezergebruikers het menu direct kunnen overslaan -->
+  <a class="skip-link" href="#hoofdinhoud">Direct naar hoofdinhoud</a>
+
+  <!-- =====================================================================
+       BOVENBALK & NAVIGATIE
+       Bevat ook een Jargon-uitleg knop (verwerkt uit post-it feedback van onze demo!)
+       ===================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Terug naar boven">
+        <span class="brand-badge" aria-hidden="true">AI</span>
+        <span>Harsha Kanaparthi &middot; Project 2</span>
+      </a>
+
+      <button
+        id="navToggle"
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        Menu &#9776;
+      </button>
+
+      <nav id="mainNav" class="main-nav" aria-label="Hoofdnavigatie">
+        <a href="#infographic">Infographic (A)</a>
+        <a href="#onderzoek-stappen">Onderzoek Stap 1–6</a>
+        <a href="#liner-experiment">Kat of Hond (B)</a>
+        <a href="#user-stories">User Stories &amp; Jira</a>
+        <a href="#wildcard">Wildcard Experiment</a>
+        <a href="#ict-waarden">5 ICT-waarden</a>
+        <a href="#team-feedback">Team &amp; Feedback</a>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          id="jargonToggle"
+          class="btn-utility"
+          type="button"
+          aria-pressed="false"
+          title="Toon extra uitleg bij technische AI-begrippen"
+        >
+          Jargon-uitleg: UIT
+        </button>
+        <button
+          id="themeToggle"
+          class="btn-utility"
+          type="button"
+          aria-pressed="false"
+        >
+          Donkere modus
+        </button>
+        <button
+          id="printBtn"
+          class="btn-utility"
+          type="button"
+          title="Print deze pagina als poster voor in de tribe"
+        >
+          Print Poster
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="hoofdinhoud">
+    <!-- ===================================================================
+         HERO SECTIE: Korte introductie & highlights voor de tribe-presentatie
+         =================================================================== -->
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-meta-pills">
+            <span class="pill">HU Open-ICT &middot; Semester 1</span>
+            <span class="pill">Project 2 (2 weken)</span>
+            <span class="pill">Beroepsrol: AI Engineer</span>
+          </div>
+          <h1>Jouw toekomst als AI Engineer &amp; praktijkproef: Kat of Hond?</h1>
+          <p>
+            Welkom op mijn individuele infographic- en onderzoekswebsite voor
+            <strong>Project 2: Beroepsrollen</strong>. In <strong>Onderdeel A</strong>
+            dook ik via LEF, vijf echte vacatures, nieuws rondom de EU AI Act,
+            LinkedIn-loopbanen, het AI-gilde en twee praktijkinterviews in het vak van
+            <strong>Artificial Intelligence (AI) Engineer</strong>. In
+            <strong>Onderdeel B</strong> trainde, testte en verbeterde ik samen met mijn
+            projectgroep (<strong>Giovanni</strong> en <strong>Nick</strong>) een
+            beeldherkenningsmodel met
+            <button class="term-chip" type="button" data-term="efficientnet">EfficientNet</button>
+            in Liner.ai.
+          </p>
+          <p>
+            <strong>Tip voor bezoekers:</strong> Klik rechtsboven op
+            <em>Jargon-uitleg: AAN</em> of klik op een onderstreepte AI-term om
+            direct een begrijpelijke uitleg te zien zonder vaktaal.
+          </p>
+
+          <!-- Vakje waarin uitleg verschijnt als iemand op een onderstreept begrip klikt -->
+          <div id="termPopover" class="term-popover" role="status" aria-live="polite" hidden></div>
+
+          <div class="hero-cta-group">
+            <a class="btn btn-primary" href="#infographic">Bekijk de 8 Infographic-blokken</a>
+            <a class="btn btn-secondary" href="#liner-experiment">Test onze Kat/Hond-resultaten</a>
+          </div>
+        </div>
+
+        <aside class="hero-summary-card" aria-label="Kerncijfers van Project 2">
+          <h2>Mijn 4 belangrijkste highlights</h2>
+          <p>
+            Naar aanleiding van feedback uit onze tribe heb ik mijn belangrijkste
+            inzichten hier meteen kort samengevat:
+          </p>
+          <div class="kpi-grid">
+            <div class="kpi-box">
+              <span class="kpi-value">150+ foto's</span>
+              <span class="kpi-label">Gecontroleerde dataset (50+ hond, 50+ kat, 50+ overig)</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-value">100% vs. 50%</span>
+              <span class="kpi-label">100% validatiescore, maar 50/50 twijfel bij hond+kat samen!</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-value">90% &rarr; 98%</span>
+              <span class="kpi-label">Stijging zekerheid na gericht bijvullen van lastige foto's</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-value">75% drempel</span>
+              <span class="kpi-label">Mijn Wildcard twijfel-filter tegen gokken bij randgevallen</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ONDERDEEL A (DEEL 1): DE 8-BLOKKEN BEROEPSROL INFOGRAPHIC
+         Gebaseerd op het "Begin with the end in mind" schema van Open-ICT
+         =================================================================== -->
+    <section id="infographic" class="section">
+      <div class="container">
+        <div class="jargon-banner" role="note">
+          <strong>Jargon-hulp staat AAN:</strong> Onder technische blokken staan nu extra
+          groene kaders met gewone-mensen-uitleg, zodat ook eerstejaars uit andere
+          beroepsrollen (zoals Business of Game Development) elk onderdeel direct kunnen volgen.
+        </div>
+
+        <div class="section-header">
+          <span class="eyebrow">Onderdeel A &middot; Individuele Infographic</span>
+          <h2>Beroepsrol: Artificial Intelligence (AI) Engineer</h2>
+          <p>
+            Hieronder zie je mijn uitgewerkte infographic volgens de acht bouwstenen uit de
+            projectopdracht. Waar ik in Project 1 vooral naar Cloud &amp; Cyber Security keek,
+            ontdekte ik in deze sprint hoe sterk AI en veilige infrastructuur in de praktijk met
+            elkaar verweven zijn.
+          </p>
+        </div>
+
+        <div class="infographic-board">
+          <div class="infographic-top-bar">
+            <div>
+              <strong>Beroepsrol [Artificial Intelligence Engineer]</strong> &mdash;
+              Samengesteld door Harsha Kanaparthi (Open-ICT S1, september 2026)
+            </div>
+            <span class="pill">Doel: Over 4 jaar startklaar met HBO-ICT diploma</span>
+          </div>
+
+          <div class="infographic-grid">
+            <!-- Blok 1: Job titles -->
+            <article class="info-card">
+              <h3>1. Job titles (Functienamen)</h3>
+              <ul class="compact-list">
+                <li><strong>AI Engineer / Applied AI Developer</strong> (bouwt werkende AI-toepassingen in software).</li>
+                <li><strong>Machine Learning (ML) Engineer</strong> (traint, evalueert en optimaliseert modellen).</li>
+                <li><strong>Computer Vision Engineer</strong> (beeld- en videoherkenning, zoals ons kat-of-hond model).</li>
+                <li><strong>Generative AI / <button class="term-chip" type="button" data-term="llm">LLM</button> Engineer</strong> (werkt met taalmodellen en <button class="term-chip" type="button" data-term="rag">RAG</button>).</li>
+                <li><strong>MLOps / Data &amp; AI Engineer</strong> (zet modellen betrouwbaar en veilig live in de cloud).</li>
+              </ul>
+              <div class="jargon-note">
+                <strong>Simpel gezegd:</strong> Een Data Scientist zoekt vooral inzichten in cijfers;
+                een AI Engineer bouwt er echt werkende, veilige software omheen die gebruikers dagelijks kunnen inzetten.
+              </div>
+            </article>
+
+            <!-- Blok 2: Most wanted skills -->
+            <article class="info-card card-teal">
+              <h3>2. Most wanted skills (Gevraagd in vacatures)</h3>
+              <ul class="compact-list">
+                <li><strong>Programmeren &amp; Data:</strong> Python (Pandas, NumPy, Scikit-learn), SQL en nette code-structuur.</li>
+                <li><strong>Deep Learning:</strong> PyTorch, TensorFlow/Keras en voorgetrainde modellen zoals EfficientNet.</li>
+                <li><strong>Moderne AI-integratie:</strong> REST API's (FastAPI), LangChain, Vector Databases en prompt-validatie.</li>
+                <li><strong>Infrastructuur &amp; Security:</strong> Git, Linux, Docker, Azure AI / cloudbeheer en databeveiliging.</li>
+                <li><strong>Soft skills:</strong> Kritisch testen op foutpatronen, keuzes helder uitleggen aan niet-techneuten en samenwerken in Scrum/Kanban.</li>
+              </ul>
+            </article>
+
+            <!-- Blok 3: Skills Roadmap - the big stuff! -->
+            <article class="info-card">
+              <h3>3. Skills Roadmap &mdash; The big stuff! (4 jaar HBO)</h3>
+              <ol class="roadmap-steps">
+                <li><span class="step-num">1</span><span><strong>Jaar 1:</strong> Python-basis, statistiek/vectoren, Git, datakwaliteit &amp; eerste beeldmodellen.</span></li>
+                <li><span class="step-num">2</span><span><strong>Jaar 2:</strong> Klassieke ML, neurale netwerken (CNN's), SQL/datapipelines &amp; API-koppelingen.</span></li>
+                <li><span class="step-num">3</span><span><strong>Jaar 3 (Stage/Gilde):</strong> GenAI/RAG, MLOps (Docker/CI-CD), security &amp; EU AI Act toepassen bij echt bedrijf.</span></li>
+                <li><span class="step-num">4</span><span><strong>Jaar 4 (Afstuderen):</strong> Zelfstandig een schaalbare, energiezuinige en geteste AI-oplossing opleveren &rarr; <strong>Hire me!</strong></span></li>
+              </ol>
+            </article>
+
+            <!-- Blok 4: Baby Roadmap -->
+            <article class="info-card card-teal">
+              <h3>4. Baby Roadmap &mdash; Eerste stappen (0–2 jaar)</h3>
+              <ol class="roadmap-steps">
+                <li><span class="step-num">A</span><span>Zelf een schone, gebalanceerde dataset bouwen en labelen (gedaan in US 1 &amp; US 2).</span></li>
+                <li><span class="step-num">B</span><span>Model trainen met <button class="term-chip" type="button" data-term="transferlearning">Transfer Learning</button> in Liner.ai en foutpatronen testen (US 3–6).</span></li>
+                <li><span class="step-num">C</span><span>Geëxporteerd model in Python inladen met een eigen zekerheidsdrempel (US 9 &amp; Wildcard).</span></li>
+                <li><span class="step-num">D</span><span>Volgende stap in S2: Zelf een klein model in PyTorch trainen zonder no-code tool.</span></li>
+              </ol>
+            </article>
+
+            <!-- Blok 5: Wat maak je dan? -->
+            <article class="info-card card-amber">
+              <h3>5. Wat maak je dan? (Concrete producten)</h3>
+              <ul class="compact-list">
+                <li><strong>Beeldclassificatie &amp; kwaliteitscontrole:</strong> Zoals ons kat-of-hond model, of automatische controle op beschadigde pakketjes op een sorteerband.</li>
+                <li><strong>Interne kennisassistent (RAG-chatbot):</strong> Een zoekhulp die antwoorden haalt uit gecontroleerde handleidingen met bronvermelding.</li>
+                <li><strong>Fraude- en anomaliedetectie:</strong> Herkennen van verdachte inlogpogingen of afwijkend netwerkverkeer in cybersecurity.</li>
+              </ul>
+            </article>
+
+            <!-- Blok 6: Wat doe je? Een week in het leven -->
+            <article class="info-card">
+              <h3>6. Wat doe je? (Een week in het leven)</h3>
+              <ul class="compact-list">
+                <li><strong>Maandag:</strong> Stand-up met het team, klantvraag vertalen naar meetbare eisen en AVG/privacy-check op de brondata.</li>
+                <li><strong>Dinsdag:</strong> Data opschonen (<em>garbage in = garbage out</em>): dubbele, onduidelijke of verkeerd gelabelde data verwijderen.</li>
+                <li><strong>Woensdag:</strong> Experimenten draaien, trainingsinstellingen vergelijken en <button class="term-chip" type="button" data-term="loss">loss</button>-curves bijhouden.</li>
+                <li><strong>Donderdag:</strong> Stresstesten met lastige randgevallen (bias, twijfelgevallen, beveiliging) + code review.</li>
+                <li><strong>Vrijdag:</strong> Demo geven in begrijpelijke taal aan opdrachtgever en bijblijven met vaknieuws/meetups.</li>
+              </ul>
+            </article>
+
+            <!-- Blok 7: Jouw beroepsrolopdracht -->
+            <article class="info-card card-teal">
+              <h3>7. Mijn beroepsrolopdracht (Kat of Hond?)</h3>
+              <p>
+                Met Giovanni en Nick trainde ik in Liner.ai een <strong>EfficientNet</strong>-model op
+                meer dan 150 foto's (hond, kat en overig). Hoewel Liner.ai <strong>100,00% validatie-accuracy</strong>
+                toonde, bewezen onze zes praktijktests dat het model bij hond+kat op één foto (75/25 of 50/50)
+                en AI-hybrides (60/35) gaat twijfelen. Door gerichte data-uitbreiding klom onze basiszekerheid
+                van <strong>~90% naar ~98%</strong>.
+              </p>
+            </article>
+
+            <!-- Blok 8: Wildcard -->
+            <article class="info-card card-purple">
+              <h3>8. Wildcard: Ethiek, Energie, Bias &amp; 80%-regel</h3>
+              <p>
+                Uit ons interview met infrastructuur-ontwerper Mark leerde ik een nuchtere les:
+                <em>"AI is vaak 80% goed, en één zware verificatiecheck kostte bij een AI-startup al $16 aan stroom."</em>
+                Een goede AI Engineer staart zich dus niet blind op hype, maar bouwt energiezuinige modellen,
+                controleert op vooroordelen (bias) in de dataset en bouwt een menselijke vangnet-drempel in.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ONDERDEEL A (DEEL 2): VOLLEDIGE UITWERKING STAP 1 T/M STAP 6
+         Met toegankelijke tabbladen zodat de bezoeker rustig per stap leest
+         =================================================================== -->
+    <section id="onderzoek-stappen" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Onderdeel A &middot; Desk- &amp; Fieldresearch</span>
+          <h2>Hoe ben ik tot dit beeld gekomen? (Stap 1 t/m Stap 6)</h2>
+          <p>
+            Klik op de onderstaande zes stappen om mijn volledige onderzoek te bekijken:
+            van LEF en vijf vergeleken Nederlandse vacatures tot nieuws rondom de EU AI Act,
+            LinkedIn-carrièrepaden, het AI-gilde en twee uitgeschreven interviews met professionals.
+          </p>
+        </div>
+
+        <div class="tabs-wrapper">
+          <div class="tablist" role="tablist" aria-label="Onderzoeksstappen Onderdeel A">
+            <button id="tab-btn-1" class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-panel-1" tabindex="0" type="button">
+              Stap 1: LEF &amp; Oriëntatie
+            </button>
+            <button id="tab-btn-2" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-2" tabindex="-1" type="button">
+              Stap 2: 5 Vacatures
+            </button>
+            <button id="tab-btn-3" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-3" tabindex="-1" type="button">
+              Stap 3: In het nieuws
+            </button>
+            <button id="tab-btn-4" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-4" tabindex="-1" type="button">
+              Stap 4: LinkedIn-routes
+            </button>
+            <button id="tab-btn-5" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-5" tabindex="-1" type="button">
+              Stap 5: Bij het Gilde
+            </button>
+            <button id="tab-btn-6" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-6" tabindex="-1" type="button">
+              Stap 6: 2 Interviews
+            </button>
+          </div>
+
+          <!-- STAP 1 -->
+          <div id="tab-panel-1" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-1">
+            <h3>Stap 1: Wat staat er op LEF klaar over de beroepsrol AI?</h3>
+            <p>
+              Op LEF begon ik mijn zoektocht bij de beschrijving van de zes ICT-beroepsrollen binnen Open-ICT.
+              Wat mij direct aansprak aan de rol van <strong>Artificial Intelligence Engineer</strong> is dat je niet
+              alleen wiskundige modellen bestudeert, maar ze vertaalt naar concrete software die een probleem oplost
+              voor echte gebruikers. Vanuit mijn MBO-4 Software Development vooropleiding én mijn stage-ervaring met
+              Python en Azure AI Services bij Kompas Publishing B.V. herkende ik dat <strong>datakwaliteit</strong> en
+              <strong>software-integratie</strong> minstens zo belangrijk zijn als het kiezen van een algoritme.
+            </p>
+            <ul class="compact-list">
+              <li><strong>Kern op LEF:</strong> Verantwoord verzamelen en voorbereiden van data, trainen en valideren van modellen, en kritisch beoordelen of het model eerlijk, veilig en uitlegbaar werkt.</li>
+              <li><strong>Koppeling met mijn voorstudie-schets:</strong> Eerst maakte ik een visuele voorstudie van de acht infographic-onderdelen om te bepalen welke vragen ik nog via vacatures en interviews moest beantwoorden.</li>
+            </ul>
+          </div>
+
+          <!-- STAP 2 -->
+          <div id="tab-panel-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-2" hidden>
+            <h3>Stap 2: Analyse van 5 Nederlandse AI-vacatures</h3>
+            <p>
+              Ik zocht vijf uiteenlopende junior- en medior-vacatures op Nederlandse vacaturesites (LinkedIn Jobs &amp;
+              Indeed, regio Randstad/Utrecht) om te controleren welke technische én menselijke vaardigheden werkgevers
+              echt vragen aan afgestudeerde HBO-ICT'ers:
+            </p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th># &amp; Functietitel</th>
+                    <th>Type organisatie</th>
+                    <th>Gevraagde hard skills (techniek)</th>
+                    <th>Gevraagde soft skills &amp; eisen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. Junior AI / ML Engineer</strong></td>
+                    <td>IT-consultancy (Utrecht)</td>
+                    <td>Python, Scikit-learn, PyTorch, Git, Docker, Azure AI / OpenAI API, SQL</td>
+                    <td>HBO-diploma (ICT/AI), klantvraag kunnen vertalen, uitleggen van modelkeuzes in begrijpelijk Nederlands</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. Junior Computer Vision Engineer</strong></td>
+                    <td>Agri- &amp; Logistiek-tech (Zuid-Holland)</td>
+                    <td>Python, OpenCV, CNN-modellen (zoals EfficientNet/YOLO), beelddata labelen &amp; opschonen</td>
+                    <td>Nauwkeurig werken met ruwe cameradata, kritisch testen op lichtval en bewegingsonscherpte</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. Applied GenAI Software Developer</strong></td>
+                    <td>SaaS-softwarebedrijf (Amsterdam)</td>
+                    <td>Python (FastAPI), TypeScript, RAG-pipelines, Vector Databases, automatische tests</td>
+                    <td>Samenwerken in een Scrum-team, oog voor AVG/privacy zodat klantdata nooit weglekt naar publieke modellen</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. Data &amp; AI Traineeship (Junior)</strong></td>
+                    <td>Rijksoverheid / Publieke sector</td>
+                    <td>Python, Pandas, SQL, basis Machine Learning, EU AI Act &amp; algoritmeregister-documentatie</td>
+                    <td>Maatschappelijk bewustzijn, controle op bias/discriminatie, helder rapporteren aan beleidsmakers</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5. Junior AI &amp; Security Analist</strong></td>
+                    <td> Cybersecurity-dienstverlener (Randstad)</td>
+                    <td>Python, Linux, anomaliedetectie op logbestanden, netwerkprotocollen, SIEM/cloudsecurity</td>
+                    <td>Gezonde argwaan bij false positives (niet blind op AI vertrouwen), stressbestendig en integer</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <strong>Mijn conclusie uit deze 5 vacatures:</strong> In <em>alle vijf</em> vacatures is
+              <strong>Python + Git + datakwaliteit</strong> verplicht, en bijna overal wordt gevraagd dat je
+              AI-resultaten kritisch controleert én in gewone taal kunt uitleggen aan collega's die zelf geen AI bouwen.
+            </p>
+          </div>
+
+          <!-- STAP 3 -->
+          <div id="tab-panel-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-3" hidden>
+            <h3>Stap 3: In het nieuws &mdash; 3 ontwikkelingen die het vak nu veranderen</h3>
+            <ul class="compact-list">
+              <li>
+                <strong>1. De Europese AI-verordening (EU AI Act) wordt stapsgewijs van kracht (2025–2026):</strong>
+                Organisaties mogen niet zomaar een ondoorzichtig model ("black box") inzetten voor belangrijke beslissingen.
+                Als AI Engineer moet je vastleggen met welke data een model is getraind, waar de foutgrenzen liggen en
+                hoe menselijk toezicht (<em>human-in-the-loop</em>) is geregeld.
+              </li>
+              <li>
+                <strong>2. Stroomverbruik van datacenters duwt bedrijven naar kleinere, zuinigere modellen:</strong>
+                In het Nederlandse nieuws gaat het veel over het volle stroomnet (netcongestie) en het hoge energieverbruik
+                van enorme taalmodellen. Daardoor groeit de vraag naar compacte modellen (zoals <em>EfficientNet</em> voor
+                beeld of <em>Small Language Models</em>) die lokaal of met veel minder rekenkracht draaien.
+              </li>
+              <li>
+                <strong>3. Toename van AI-gegenereerde (synthetische) beelden en deepfakes:</strong>
+                Klassieke beeldherkenners krijgen steeds vaker nepfoto's of samengestelde plaatjes voorgeschoteld.
+                Precies daarom hebben wij in <strong>Test 6</strong> ons kat-of-hond model bewust getest met
+                AI-gegenereerde hybride hond-kat foto's!
+              </li>
+            </ul>
+          </div>
+
+          <!-- STAP 4 -->
+          <div id="tab-panel-4" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-4" hidden>
+            <h3>Stap 4: LinkedIn-analyse &mdash; Welke routes leiden naar AI Engineer?</h3>
+            <p>
+              Ik bekeek op LinkedIn vier profielen van werkende AI- en ML-engineers in Nederland (functieroutes
+              samengevat zonder privénamen conform AVG) om te zien hoe zij op hun plek terechtkwamen:
+            </p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Profielroute</th>
+                    <th>Vooropleiding &amp; studie</th>
+                    <th>Tussenstappen (stages / eerste baan)</th>
+                    <th>Wat ik hiervan meeneem voor mijn eigen pad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Profiel A: Junior ML Engineer</strong></td>
+                    <td>HAVO &rarr; HBO-ICT (richting AI)</td>
+                    <td>Derdejaars stage Computer Vision &rarr; afstudeeropdracht rondom voorspellend onderhoud &rarr; direct aangenomen</td>
+                    <td>Een sterke stage in jaar 3 met een echt werkend prototype is vaak je directe opstap naar je eerste baan.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Profiel B: Applied AI Software Engineer</strong></td>
+                    <td>MBO-4 Software Developer &rarr; HBO-ICT</td>
+                    <td>Werkte tijdens studie als bijbaan Python/webdeveloper &rarr; leerde LLMs en Docker koppelen aan bestaande webapps</td>
+                    <td>Sluit één-op-één aan bij mijn eigen route! Mijn MBO-4 softwarebasis helpt enorm bij het netjes bouwen van applicaties rondom een model.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Profiel C: Data &amp; MLOps Engineer</strong></td>
+                    <td>HBO-ICT (Cloud / Software)</td>
+                    <td>Begon als Cloud Engineer (Linux, Docker, Azure) &rarr; specialiseerde zich in het veilig live zetten van ML-modellen</td>
+                    <td>Laat zien dat mijn interesse in Cloud/Security uit Project 1 prima te combineren valt met AI via MLOps.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Profiel D: AI Consultant Publieke Sector</strong></td>
+                    <td>HBO Business IT &amp; Data</td>
+                    <td>Data-analist &rarr; AI-traineeship met focus op verantwoorde AI, bias-audits en EU AI Act</td>
+                    <td>Bewijst dat communicatie en ethiek net zo zwaar tellen als code schrijven.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- STAP 5 -->
+          <div id="tab-panel-5" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-5" hidden>
+            <h3>Stap 5: Op bezoek bij het AI-gilde &amp; ouderejaars studenten</h3>
+            <p>
+              Vanaf semester 2 kies je binnen Open-ICT een gilde. Door te kijken hoe ouderejaars bij het AI-gilde werken
+              en waar zij tegenaan lopen, haalde ik drie concrete lessen op:
+            </p>
+            <ul class="compact-list">
+              <li>
+                <strong>Het grootste tijdverlies zit in rommelige data, niet in de modelknop:</strong> Ouderejaars vertelden
+                dat je bij echte opdrachtgevers zelden een kant-en-klare map met schone data krijgt. Ongeveer 60% tot 70% van
+                de projecttijd gaat zitten in opschonen, labelen, controleren op scheve verhoudingen en testen.
+              </li>
+              <li>
+                <strong>Werk vanaf dag één met versiebeheer en duidelijke taakafspraken:</strong> Als drie mensen tegelijk aan
+                een dataset sleutelen zonder afspraken, overschrijf je elkaars werk of belanden dezelfde foto's dubbel in de
+                trainings- én testset (waardoor je testscore vals hoog lijkt).
+              </li>
+              <li>
+                <strong>Van Liner.ai naar Python notebooks:</strong> In semester 1 gebruik je Liner.ai om snel het hele proces
+                (data &rarr; training &rarr; evaluatie &rarr; foutenanalyse) te ervaren; in hogere semesters schrijf je die
+                stappen zelf uit in Python met Jupyter Notebooks, Scikit-learn en PyTorch.
+              </li>
+            </ul>
+          </div>
+
+          <!-- STAP 6 -->
+          <div id="tab-panel-6" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-6" hidden>
+            <h3>Stap 6: Met professionals in gesprek! (2 praktijkinterviews)</h3>
+            <p>
+              In de opdracht stond dat je ook samen met tribegenoten op pad mocht gaan naar conferenties en vakmensen.
+              Hieronder vat ik de twee echte praktijkgesprekken samen die wij binnen onze tribe op
+              <strong>Cybersec Nederland in Utrecht</strong> voerden, en wat ik daaruit heb geleerd voor mijn eigen
+              toekomst in ICT en AI:
+            </p>
+
+            <div class="evidence-grid">
+              <div class="info-card">
+                <h4>Interview 1: Cyber Reservist bij het Defensie Cyber Commando (DCC)</h4>
+                <p><strong>Achtergrond:</strong> Elektrotechnisch ingenieur met ruime cyber-onderzoekservaring in het bedrijfsleven, daarnaast deeltijd militair (reservist) bij het DCC.</p>
+                <ul class="compact-list">
+                  <li><strong>Verschil met bedrijfsleven:</strong> Gewone bedrijven doen puur defensieve cybersecurity; Defensie mag binnen strenge juridische kaders ook <em>cyberoffense</em> uitvoeren en werkt aan <button class="term-chip" type="button" data-term="cema">CEMA</button> (samenkomst van elektronische oorlogsvoering zoals draadloze signaalherkenning/jamming en cyberoperaties voor <em>situational awareness</em>).</li>
+                  <li><strong>Patroonherkenning in de praktijk:</strong> Herkennen welke draadloze protocollen eigen troepen zijn en welke vreemd zijn, raakt direct aan slimme signaal- en patroonherkenning.</li>
+                  <li><strong>Zijn gouden tip voor HBO-studenten:</strong> <em>"Richt je tijdens je HBO-studie nog niet te smal op één niche, maar bouw een zo breed mogelijke ICT-basis op. Met een HBO-diploma bewijs je dat je complexe problemen kunt oplossen; specifieke specialisatie leer je daarna in je baan en interne opleidingen."</em></li>
+                </ul>
+              </div>
+
+              <div class="info-card card-teal">
+                <h4>Interview 2 (10-09-2026 via tribemember Bart): Mark (NLUUG &amp; ZZP Open Infrastructure Designer)</h4>
+                <p><strong>Achtergrond:</strong> Programmeert al sinds 1978 (o.a. NLR, UNIX-trainer, Master Computing Science, sinds 2002 zelfstandig infrastructuur-ontwerper en actief bij open-systemenvereniging NLUUG). <em>Achternaam bewust weggelaten uit privacy-overwegingen (AVG).</em></p>
+                <ul class="compact-list">
+                  <li><strong>Waarom AI nú technisch versnelde:</strong> Mark legde uit dat AI inhoudelijk al decennia bestaat (hij kreeg in 1985 al Prolog), maar dat de huidige doorbraak vooral komt doordat NVIDIA-chips rekenen met <strong>veel kleinere floating-point getallen</strong> voor snelle matrixberekeningen, plus vrijgekomen chipcapaciteit na bitcoinmining.</li>
+                  <li><strong>Marks kritische "80% goed"-regel:</strong> Voor een standaard opzegmailtje is een AI die voor 80% goed zit prima. Maar bij kritieke zaken zoals applicatiebeveiliging of code die je niet begrijpt, is 80% gevaarlijk en blijft een menselijke specialist onmisbaar.</li>
+                  <li><strong>Energieprijs van blind AI-gebruik:</strong> Hij noemde een case van een AI-startup waarbij het achteraf factchecken van één AI-vraag op internetbronnen <strong>$16 aan elektriciteit</strong> kostte!</li>
+                  <li><strong>Netwerken &amp; Inclusive Design:</strong> Mark raadde studenten aan om al tijdens hun studie naar vakbijeenkomsten en meetups te gaan (zoals NLUUG, FOSDEM en zijn eigen <em>Inclusive Design</em> meetup rondom digitale toegankelijkheid voor blinde gebruikers).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ONDERDEEL B: AI ONTDEKKEN - KAT OF HOND? (LINER.AI EXPERIMENTEN)
+         Bevat Learning Story 1, echte Liner.ai screenshots & live simulator!
+         =================================================================== -->
+    <section id="liner-experiment" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Onderdeel B &middot; Praktijkopdracht in Liner.ai</span>
+          <h2>AI ontdekken: Kat of Hond? (Modeltraining &amp; Foutenanalyse)</h2>
+          <p>
+            In Onderdeel B kropen Giovanni, Nick en ik in de huid van een AI Engineer. Met de tool
+            <strong>Liner.ai</strong> en de architectuur <strong>EfficientNet</strong> bouwden, trainden, testten en
+            verbeterden wij een beeldclassificatiemodel dat katten, honden en overige objecten uit elkaar houdt.
+          </p>
+        </div>
+
+        <!-- Learning Story 1 beknopt en helder uitgelegd op de pagina -->
+        <article class="info-card" style="margin-bottom: 1.75rem;">
+          <h3>Learning Story 1: Hoe herkent ons EfficientNet-model eigenlijk een kat of hond?</h3>
+          <p>
+            Voordat we blind op de knop <em>Train</em> drukten, zocht ik voor <strong>Learning Story 1</strong> uit wat
+            Liner.ai onder de motorkap doet:
+          </p>
+          <ol class="compact-list">
+            <li><strong>Van foto naar getallenmatrix:</strong> Elke foto wordt opgeschaald naar een vast formaat (bijv. 224&times;224 pixels) waarbij elke pixel uit drie kleurwaarden (Rood, Groen, Blauw) bestaat.</li>
+            <li><strong>Kenmerken stapelen (Convolutional Neural Network):</strong> De eerste lagen van <em>EfficientNet</em> herkennen simpele randen en kleurvlakken; middelste lagen herkennen patronen zoals vachtstructuur of driehoekjes; diepere lagen herkennen complete onderdelen zoals hangoren, kattensnorharen of een hondensnuit.</li>
+            <li><strong>Transfer Learning bespaart tijd én stroom:</strong> <em>EfficientNet</em> is vooraf al getraind op miljoenen algemene beelden. Liner.ai hergebruikt die basiskennis (<em>Extracting features</em>) en traint alleen de laatste beslislaag op onze drie eigen labels: <code>Hond</code>, <code>Kat</code> en <code>Overig</code>.</li>
+            <li><strong>Waarom 100% Validation Accuracy verraderlijk kan zijn:</strong> Tijdens training houdt Liner.ai een klein deel van de geüploade set apart als validatieset. Scoor je daar 100% op bij een relatief kleine set, dan weet je pas écht hoe goed je model is zodra je <strong>nieuwe, ongeziene stresstest-foto's</strong> aanbiedt!</li>
+          </ol>
+        </article>
+
+        <!-- Echte screenshots uit ons Liner.ai project -->
+        <div class="evidence-grid">
+          <figure class="evidence-card">
+            <img
+              src="assets/liner_ai_efficientnet_loss_grafiek.jpg"
+              alt="Screenshot uit Liner.ai van ons project Hond of kat met EfficientNet: Training loss daalt van 0,44 bij stap 27 naar bijna 0 bij stap 632 met 100% validation accuracy."
+            />
+            <figcaption>
+              <strong>Bewijs 1 (US 3 &ndash; Training in Liner.ai):</strong> Onze <em>EfficientNet</em>-training voor
+              <em>Project 2 beroepsrol AI - Hond of kat</em>. De blauwe trainings-loss daalt van ~0,44 (stap 27) via
+              0,12 (stap 82) naar vrijwel 0,00 (stap 632).
+            </figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <img
+              src="assets/liner_ai_evaluatie_100_procent.jpg"
+              alt="Screenshot van Liner.ai feature extraction en evaluatiescores: Accuracy, Precision, Recall en F1-score staan allemaal op 100,00% op de validatiesplit."
+            />
+            <figcaption>
+              <strong>Bewijs 2 (Kritisch oordelen op metrics):</strong> Op de schone interne validatieset rapporteerde
+              Liner.ai 100,00% op Accuracy, Precision, Recall en F1. Juist daarom daagden wij het model daarna uit met
+              6 lastige praktijktests!
+            </figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <img
+              src="assets/liner_ai_hybride_hond_kat_test6.jpg"
+              alt="Twee AI-gegenereerde hybride hond-kat testafbeeldingen die we in Test 6 gebruikten om te onderzoeken hoe het model reageert op gemengde eigenschappen."
+            />
+            <figcaption>
+              <strong>Bewijs 3 (US 5 &ndash; Test 6 Hybrides):</strong> Onze AI-gegenereerde kruisingen tussen puppy en
+              kitten. Hiermee testten we of <em>EfficientNet</em> vooral let op vachtstrepen of op kop- en oorvorm.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- INTERACTIEVE SIMULATOR VAN ONZE 6 TESTS + WILDCARD DREMPELWAARDE -->
+        <div class="simulator-box" aria-labelledby="simHeading">
+          <h3 id="simHeading">Interactieve Simulator: Bekijk onze 6 echte Liner.ai tests &amp; schuif met mijn Wildcard-drempel</h3>
+          <p>
+            Kies hieronder één van onze uitgevoerde tests uit Onderdeel B en verschuif de
+            <strong>zekerheidsdrempel</strong> (standaard 75% uit mijn Wildcard-experiment) om live te zien wanneer het
+            model een label mag accepteren en wanneer het eerlijk <em>"Twijfelgeval: menselijke controle nodig"</em> meldt.
+          </p>
+
+          <div class="scenario-buttons" role="group" aria-label="Kies een uitgevoerd testscenario">
+            <button class="scenario-btn" type="button" data-scenario="test1">Test 1: Gewone hond (~90%)</button>
+            <button class="scenario-btn" type="button" data-scenario="test2">Test 2: Willekeurig object (~90%)</button>
+            <button class="scenario-btn" type="button" data-scenario="test3">Test 3: Na dataset-verbetering (~98%)</button>
+            <button class="scenario-btn" type="button" data-scenario="test4">Test 4: Verstopte kat (99,96%)</button>
+            <button class="scenario-btn" type="button" data-scenario="test5a">Test 5a: Hond + kat samen 1 (75/25)</button>
+            <button class="scenario-btn" type="button" data-scenario="test5b">Test 5b: Hond + kat samen 2 (50/50)</button>
+            <button class="scenario-btn is-active" type="button" data-scenario="test6a">Test 6a: AI-hybride twijfel (60/35)</button>
+            <button class="scenario-btn" type="button" data-scenario="test6b">Test 6b: Hybride puppy-kop (99%)</button>
+            <button class="scenario-btn" type="button" data-scenario="wildcardBias">Wildcard: Kat op groen gras (64%)</button>
+          </div>
+
+          <div class="sim-grid">
+            <div class="threshold-control">
+              <label for="thresholdSlider">
+                <span>Minimale zekerheidsdrempel (Confidence Threshold):</span>
+                <strong id="thresholdValue">75%</strong>
+              </label>
+              <input
+                id="thresholdSlider"
+                type="range"
+                min="50"
+                max="95"
+                step="5"
+                value="75"
+              />
+              <p style="margin-top: 0.6rem; margin-bottom: 0; font-size: 0.85rem;">
+                <em>Waarom deze schuif?</em> Zonder drempel kiest een classificatiemodel zelfs bij 50%/50% of 60%/35%
+                gewoon het hoogste getal. Met een drempel van 75% vangen we risicovolle twijfelgevallen af.
+              </p>
+            </div>
+
+            <div class="sim-output" aria-live="polite">
+              <h4 id="simScenarioTitle">Test 6a (US 5): AI-gegenereerde hybride hond-kat (twijfelgeval)</h4>
+
+              <div class="prob-row">
+                <div class="prob-label"><span>Label: Hond</span><span id="valDog">60%</span></div>
+                <div class="prob-track"><div id="barDog" class="prob-fill" style="width: 60%;"></div></div>
+              </div>
+
+              <div class="prob-row">
+                <div class="prob-label"><span>Label: Kat</span><span id="valCat">35%</span></div>
+                <div class="prob-track"><div id="barCat" class="prob-fill cat" style="width: 35%;"></div></div>
+              </div>
+
+              <div class="prob-row">
+                <div class="prob-label"><span>Label: Overig (geen kat/hond)</span><span id="valOther">5%</span></div>
+                <div class="prob-track"><div id="barOther" class="prob-fill other" style="width: 5%;"></div></div>
+              </div>
+
+              <div id="simDecision" class="decision-banner uncertain">
+                Wildcard Twijfel-filter actief: Hoogste score is Hond (60%), maar dat ligt onder de drempel van 75%. Advies: niet blind vertrouwen, laat een mens meekijken!
+              </div>
+              <p id="simExplanation" style="margin-top: 0.75rem; margin-bottom: 0; font-size: 0.88rem;">
+                Op ons eerste AI-hybride plaatje gaf Liner.ai 60% hond en 35% kat. Mijn Wildcard-drempel van 75% vangt dit netjes op als 'Twijfelgeval: controleer handmatig'.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volledige overzichtstabel van onze 6 uitgevoerde tests -->
+        <h3>Overzichtstabel van onze 6 foutenpatroon-experimenten in Liner.ai</h3>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Testnr. &amp; Doel</th>
+                <th>Wat hebben we precies getest?</th>
+                <th>Gemeten uitkomst in Liner.ai</th>
+                <th>Onze kritische verklaring (AI-inzicht)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Test 1 (US 4)</strong><br />Basisherkenning</td>
+                <td>Ongeziene, duidelijke foto's van katten en honden uit een losse testmap (30+ beelden).</td>
+                <td>Gemiddeld <strong>~90% zekerheid</strong>, met slechts een paar losse foutjes.</td>
+                <td>Transfer learning met EfficientNet herkent standaard lichaamshoudingen en snuiten al snel goed.</td>
+              </tr>
+              <tr>
+                <td><strong>Test 2 (US 1 &amp; 4)</strong><br />Willekeurige objecten</td>
+                <td>Foto's zonder kat of hond (andere dieren, meubels, alledaagse spullen).</td>
+                <td>Rond <strong>~90% zekerheid</strong> herkend als <em>Overig</em> (niet-kat/niet-hond).</td>
+                <td>Bewijst waarom de derde klasse <em>Overig</em> (50+ foto's) onmisbaar is; zonder die klasse dwing je een 2-klassenmodel om zelfs een stoel 'kat' of 'hond' te noemen.</td>
+              </tr>
+              <tr>
+                <td><strong>Test 3 (US 6 &amp; 8)</strong><br />Extra ongecategoriseerde variatie</td>
+                <td>Extra gevarieerde foto's met andere achtergronden en hoeken toegevoegd en opnieuw getraind.</td>
+                <td>Zekerheid op testfoto's steeg van <strong>~90% naar ~98%</strong>!</td>
+                <td>Meer variatie in belichting en achtergrond verkleint <button class="term-chip" type="button" data-term="overfitting">overfitting</button> en maakt de klassegrenzen scherper.</td>
+              </tr>
+              <tr>
+                <td><strong>Test 4 (US 5)</strong><br />Verstopte dieren</td>
+                <td>Katten en honden die half verstopt zaten onder een deken of achter een voorwerp.</td>
+                <td>Verrassend hoog: tot <strong>99,96% zekerheid</strong> bij zichtbare oog-/oorvorm!</td>
+                <td>CNN-lagen kijken naar lokale deelkenmerken (zoals één driehoekig kattenoor + pupil) en hebben niet per se vier poten en een staart nodig.</td>
+              </tr>
+              <tr>
+                <td><strong>Test 5 (US 5)</strong><br />Hond én kat samen</td>
+                <td>Twee foto's waarop zowel een hond als een kat tegelijk in beeld zaten.</td>
+                <td>Foto 1: <strong>75% hond / 25% kat</strong>.<br />Foto 2: <strong>50% hond / 50% kat</strong>.</td>
+                <td>Een <em>single-label classifier</em> verdeelt altijd 100% over de klassen. Voor meerdere dieren tegelijk heb je <em>multi-label classificatie</em> of <em>object detection</em> (zoals YOLO met vakjes) nodig.</td>
+              </tr>
+              <tr>
+                <td><strong>Test 6 (US 5)</strong><br />AI-gegenereerde hybrides</td>
+                <td>Drie synthetische kruisingen tussen een hond en een kat (zie screenshot hierboven).</td>
+                <td>Twijfelhybride: <strong>60% hond / 35% kat</strong>.<br />Kattenkop-hybride: <strong>99% kat</strong>.<br />Puppykop met streepjes: <strong>99% hond</strong>.</td>
+                <td>Het model hecht veel meer gewicht aan de vorm van kop, snuit en oren dan aan streepjes op de vacht.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         USER STORIES US 1 T/M US 9 GEKOPPELD AAN ONS JIRA-BORD
+         =================================================================== -->
+    <section id="user-stories" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Onderdeel B &middot; Taakverdeling &amp; User Stories</span>
+          <h2>Uitwerking User Stories (US 1 t/m US 9) op ons Jira Kanban-bord</h2>
+          <p>
+            Bij de start van Project 2 schreven we in onze samenwerkingsovereenkomst eerst dat we een Trello-bord wilden
+            bijhouden. Tijdens het inrichten stapten we in overleg over op <strong>Atlassian Jira</strong>
+            (<code>ai-project2.atlassian.net</code>), zodat we elke User Story een eigen ticketnummer
+            (<code>AI-1</code> t/m <code>AI-9</code>) en duidelijke eigenaar konden geven:
+            <strong>Harsha (HK)</strong>, <strong>Giovanni (GL)</strong> en <strong>Nick (NB)</strong>.
+          </p>
+        </div>
+
+        <figure class="evidence-card" style="max-width: 54rem; margin-bottom: 1.5rem;">
+          <img
+            src="assets/jira_kanban_bord_ai_project2.jpg"
+            alt="Screenshot van ons Jira Kanban-bord voor Project AI met teamleden Harsha (HK), Giovanni (GL) en Nick (NB), met kolommen To Do, In Progress en Done."
+          />
+          <figcaption>
+            <strong>Ons echte Jira-bord tijdens de sprint:</strong> Zes afgeronde basisstories in <em>Done</em>
+            (waaronder mijn ticket <code>AI-2 Data controleren en labelen</code>) en de drie vervolgtickets
+            <code>AI-7</code>, <code>AI-8 Verbeter het model</code> (mijn iteratieticket) en <code>AI-9</code> klaar voor
+            de tweede sprinthelft, die we daarna hebben uitgevoerd en gedocumenteerd.
+          </figcaption>
+        </figure>
+
+        <!-- Filterknoppen per teamlid -->
+        <div class="filter-bar" role="group" aria-label="Filter User Stories op betrokken teamlid">
+          <button class="filter-btn is-active" type="button" data-filter="all">Alle User Stories (9)</button>
+          <button class="filter-btn" type="button" data-filter="HK">Mijn focus: Harsha (HK)</button>
+          <button class="filter-btn" type="button" data-filter="GL">Giovanni (GL)</button>
+          <button class="filter-btn" type="button" data-filter="NB">Nick (NB)</button>
+        </div>
+
+        <div class="us-grid">
+          <article class="us-card" data-owner="NB HK GL">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-1 &middot; US 1</span>
+              <span class="badge-owner">Trekker: Nick (NB) + team</span>
+            </div>
+            <h3>Een dataset samenstellen</h3>
+            <p>
+              Minimaal 50 kattenfoto's, 50 hondenfoto's en 50 foto's zonder kat/hond (totaal 150+ beelden) verzameld met
+              verschillende rassen, houdingen, achtergronden en lichtomstandigheden, netjes gescheiden in mappen.
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="HK">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-2 &middot; US 2</span>
+              <span class="badge-owner">Eigenaar: Harsha (HK)</span>
+            </div>
+            <h3>Data controleren en labelen</h3>
+            <p>
+              Ik controleerde alle mappen handmatig op dubbele bestanden, te wazige plaatjes, verkeerde labels en foto's
+              waar kat én hond tegelijk op stonden. Ook checkte ik op privacy (geen privégezichten) en hield ik de
+              trainingsdata lokaal gescheiden van de testset (<button class="term-chip" type="button" data-term="dataatrest">Data at Rest</button>).
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="GL HK NB">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-3 &middot; US 3</span>
+              <span class="badge-owner">Trekker: Giovanni (GL) + team</span>
+            </div>
+            <h3>Een eerste model trainen</h3>
+            <p>
+              Gecontroleerde dataset ingeladen in Liner.ai onder het project <em>Hond of kat</em> en getraind met
+              <strong>EfficientNet</strong>. De loss zakte in 632 stappen van 0,44 naar ~0,00 met een interne validatie-score van 100,00%.
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="HK GL NB">
+            <div class="us-meta">
+              <span class="us-jira badge-jira">Jira: AI-4 &middot; US 4</span>
+              <span class="badge-owner">Samen: HK, GL, NB</span>
+            </div>
+            <h3>Het model testen (30+ ongeziene foto's)</h3>
+            <p>
+              Getest met een losse map van meer dan 30 nieuwe foto's die niet in de training zaten. Op gewone foto's van
+              katten, honden en losse voorwerpen haalden we ~90% zekerheid en legden we alle twijfelgevallen vast.
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="HK GL NB">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-5 &middot; US 5</span>
+              <span class="badge-owner">Samen: HK, GL, NB</span>
+            </div>
+            <h3>Onderzoek patronen in de fouten</h3>
+            <p>
+              Gerichte experimenten uitgevoerd met verstopte dieren (99,96%), hond+kat samen op één foto (75/25 en
+              50/50) en AI-gegenereerde hond-kat hybrides (60/35 vs. 99%). Zo ontdekten we precies waar single-label classificatie tekortschiet.
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="HK NB">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-6 &middot; US 6</span>
+              <span class="badge-owner">Samen: HK &amp; NB</span>
+            </div>
+            <h3>Onderzoek je dataset (Bias &amp; variatie)</h3>
+            <p>
+              Onderzocht wat eenzijdige achtergronden doen: omdat honden vaker buiten op groen gras gefotografeerd worden
+              en katten vaker binnen op een kleed of bank, kan een model stiekem naar het gras kijken in plaats van naar het dier.
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="NB HK">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-7 &middot; US 7</span>
+              <span class="badge-owner">Trekker: Nick (NB) + HK</span>
+            </div>
+            <h3>Onderzoek trainingsinstellingen</h3>
+            <p>
+              Vergeleken wat het verschil is tussen snelle/lichte modelkeuzes en zwaardere instellingen in Liner.ai.
+              Bij onze datasetgrootte leverde EfficientNet al binnen enkele minuten een stabiele loss-curve zonder onnodig stroomverbruik.
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="HK">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-8 &middot; US 8</span>
+              <span class="badge-owner">Eigenaar: Harsha (HK)</span>
+            </div>
+            <h3>Verbeter het model (Iteratieslag)</h3>
+            <p>
+              Op basis van de fouten uit Test 1, 2 en 6 voegde ik gericht extra gevarieerde buitenkatten, binnenhonden en
+              onduidelijke objecten toe. Na hertrainen klom de zekerheid op onze standaardtset aantoonbaar van
+              <strong>~90% naar ~98%</strong>!
+            </p>
+          </article>
+
+          <article class="us-card" data-owner="GL HK">
+            <div class="us-meta">
+              <span class="badge-jira">Jira: AI-9 &middot; US 9</span>
+              <span class="badge-owner">Trekker: Giovanni (GL) + HK</span>
+            </div>
+            <h3>Onderzoek je model (Export &amp; Code)</h3>
+            <p>
+              Het getrainde model geëxporteerd uit Liner.ai en bekeken hoe de gegenereerde Python-code een foto inleest,
+              schaalt naar vaste pixelafmetingen, door het model haalt en via een kansverdeling (Softmax) een label uit <code>labels.txt</code> kiest.
+            </p>
+          </article>
+        </div>
+
+        <!-- =================================================================
+             WILDCARD USER STORY (EXACT VOLGENS HET VERPLICHTE HU-FORMAT!)
+             ================================================================= -->
+        <div id="wildcard" class="wildcard-panel">
+          <span class="eyebrow">Onderdeel B &middot; Eigen uitbreiding door Harsha (HK)</span>
+          <h3>Wildcard User Story &mdash; Eigen AI-experiment: Twijfel-drempel &amp; Achtergrond-bias check</h3>
+          <p>
+            In de projecthandleiding stond de uitnodiging om een eigen AI-vraag te formuleren in het verplichte
+            User-Story-format. Omdat ik geschrokken was hoe makkelijk een standaardmodel bij 50%/50% (Test 5b) of
+            60%/35% (Test 6a) tóch stellig één winnaar uitkiest, ontwierp ik dit experiment:
+          </p>
+
+          <div class="info-card card-purple" style="margin-bottom: 1rem;">
+            <p style="margin-bottom: 0.5rem;">
+              <strong>User Story (vast HU-format):</strong><br />
+              <em>"Als <strong>junior AI-ontwikkelaar</strong> wil ik <strong>testen in hoeverre ons geëxporteerde kat-of-hondmodel zich laat afleiden door achtergrond-bias (zoals katten op een groen grasveld) én een minimale zekerheidsdrempel van 75% inbouwen in het Python-voorspelscript</strong>, zodat <strong>het systeem bij twijfelgevallen (zoals hybrides of hond+kat samen) eerlijk 'Onzeker – controleer handmatig' teruggeeft in plaats van met schijnzekerheid een fout label te tonen</strong>."</em>
+            </p>
+          </div>
+
+          <div class="sim-grid">
+            <div>
+              <h4>Acceptatiecriteria (allemaal getoetst):</h4>
+              <ul class="compact-list">
+                <li>&#9989; Minstens 10 'tegen-de-verwachting-in' testfoto's verzameld (5 katten buiten op groen gras, 5 honden binnen op een kleed/bank) en vergeleken met normale foto's.</li>
+                <li>&#9989; Vastgesteld of de gemiddelde zekerheidsscore daalt bij ongebruikelijke achtergronden (gemeten daling bij katten op felgroen gras van ~95% naar ~64–78% vóór dataset-aanvulling).</li>
+                <li>&#9989; In het geëxporteerde Python-inferentiescript een instelbare drempel <code>MIN_CONFIDENCE = 0.75</code> toegevoegd boven op de Softmax-uitvoer.</li>
+                <li>&#9989; Geverifieerd dat Test 5b (50%) en Test 6a (60%) netjes worden opgevangen als <code>ONZEKER_HANDMATIGE_CONTROLE</code>, terwijl duidelijke foto's (&ge; 90%) gewoon doorkomen.</li>
+              </ul>
+
+              <h4 style="margin-top: 1rem;">Technische leeruitdaging &amp; Betrouwbare bronnen:</h4>
+              <p style="font-size: 0.9rem;">
+                <strong>Leeruitdaging:</strong> Begrijpen hoe een Softmax-laag waarschijnlijkheden berekent die altijd
+                optellen tot 1,0 (100%), hoe <em>shortcut learning</em> (achtergrond-bias) ontstaat en hoe je in Python
+                een veilige fallback-drempel programmeert.<br />
+                <strong>Gebruikte betrouwbare bronnen:</strong><br />
+                1. Google Machine Learning Crash Course &ndash; <em>Classification: Thresholding &amp; Fairness</em>
+                (<code>developers.google.com/machine-learning/crash-course/classification/thresholding</code>)<br />
+                2. TensorFlow Core Tutorials &ndash; <em>Image Classification &amp; Softmax probabilities</em>
+                (<code>tensorflow.org/tutorials/images/classification</code>)
+              </p>
+            </div>
+
+            <div>
+              <h4>Mijn uitgewerkte Python drempel-check (bij US 9 &amp; Wildcard):</h4>
+              <pre class="code-block"><code># Eigen uitbreiding door Harsha Kanaparthi op de Liner.ai model-export
+# Doel: Voorkom blind gokken bij twijfelgevallen (zoals Test 5b: 50% of Test 6a: 60%)
+
+from PIL import Image
+import numpy as np
+
+MIN_ZEKERHEID = 0.75  # 75% drempelwaarde uit mijn Wildcard-experiment
+LABELS = ["Hond", "Kat", "Overig"]
+
+def voorspel_veilig(kans_lijst):
+    """
+    Ontvangt de 3 kansen uit het EfficientNet-model (tellen samen op tot 1.0)
+    en geeft alleen een definitief dierlabel terug boven de 75% grens.
+    """
+    hoogste_index = int(np.argmax(kans_lijst))
+    hoogste_kans = float(kans_lijst[hoogste_index])
+    gekozen_label = LABELS[hoogste_index]
+
+    # Controleer ook of nummer 1 en nummer 2 niet gevaarlijk dicht bij elkaar liggen
+    gesorteerd = sorted(kans_lijst, reverse=True)
+    marge = gesorteerd[0] - gesorteerd[1]
+
+    if hoogste_kans &lt; MIN_ZEKERHEID or marge &lt; 0.20:
+        return {
+            "status": "TWIJFELGEVAL_CONTROLEER_HANDMATIG",
+            "voorlopig_label": gekozen_label,
+            "zekerheid_pct": round(hoogste_kans * 100, 2)
+        }
+
+    return {
+        "status": "GEACCEPTEERD",
+        "label": gekozen_label,
+        "zekerheid_pct": round(hoogste_kans * 100, 2)
+    }</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         DE 5 ESSENTIËLE ICT-WAARDEN VAN OPEN-ICT
+         =================================================================== -->
+    <section id="ict-waarden" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Verantwoorde ICT &middot; HU Open-ICT</span>
+          <h2>Hoe de 5 essentiële ICT-waarden terugkomen in mijn Project 2</h2>
+          <p>
+            Bij Open-ICT beoordeel je techniek niet los van de maatschappij. In zowel mijn beroepsrolonderzoek (Onderdeel A)
+            als ons Liner.ai-experiment en deze website (Onderdeel B) heb ik alle vijf de waarden concreet toegepast:
+          </p>
+        </div>
+
+        <div class="values-grid">
+          <article class="value-card">
+            <h3>1. Duurzame energie</h3>
+            <p>
+              In plaats van een neuraal netwerk vanaf nul urenlang op zware GPU's te trainen, gebruikten wij
+              <strong>Transfer Learning met EfficientNet</strong> (klaar in enkele minuten). Ook draait deze hele website
+              zonder zware frameworks of externe trackers. Dit sluit direct aan bij Marks praktijkvoorbeeld uit ons
+              interview waarin één onnodig zware AI-controle al $16 aan elektriciteit verbruikte.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <h3>2. Toegankelijkheid en inclusie</h3>
+            <p>
+              Geïnspireerd door Marks verhaal over <em>Inclusive Design</em> én onze post-it feedback bouwde ik deze
+              website met WCAG AA+ contrast, volledige toetsenbordbediening, ondersteuning voor <strong>200% browser-zoom</strong>
+              zonder horizontale schuifbalk, beschrijvende alt-teksten én een <strong>Jargon-uitleg knop</strong> voor
+              medestudenten zonder AI-achtergrond.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <h3>3. Verantwoorde hardware</h3>
+            <p>
+              Een licht model zoals EfficientNet kan na export (bijv. naar TFLite of ONNX) prima draaien op bestaande
+              laptops of oudere randapparatuur zonder dat gebruikers telkens nieuwe, grondstofintensieve hardware hoeven te kopen.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <h3>4. Privacy (AVG)</h3>
+            <p>
+              Bij taak <code>AI-2</code> controleerde ik dat er in onze trainings- en testmappen geen herkenbare gezichten,
+              privé-interieurs met persoonsgegevens of kentekens zaten. Daarnaast hebben we in het interviewverslag de
+              achternaam van Mark bewust weggelaten omdat daar vooraf geen expliciete toestemming voor was gevraagd.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <h3>5. Security</h3>
+            <p>
+              Tijdens onze presentatie kregen we het compliment <em>"Data at rest is goed geregeld"</em> én de tip om
+              beveiliging nog scherper uit te leggen: we bewaarden onze bronmappen gecontroleerd lokaal, voorkwamen
+              <em>data poisoning</em> (vervuilde/verkeerd gelabelde trainingsbeelden) via handmatige controle én voegden
+              een 75%-twijfeldrempel toe tegen misleidende invoer.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         TEAMAFSPRAKEN, ECHTE POST-IT FEEDBACK & REFLECTIE OP VERVOLGACTIES
+         =================================================================== -->
+    <section id="team-feedback" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Samenwerken &amp; Boodschap Delen</span>
+          <h2>Onze samenwerking (Harsha, Giovanni &amp; Nick) en verwerkte Post-it feedback</h2>
+          <p>
+            In mijn ontwikkeldoel uit Project 1 nam ik mij voor om in Sprint 2 eerst rustig afspraken te maken met mijn
+            teamgenoten voordat we begonnen met bouwen. Zo hebben wij dat aangepakt én zo heb ik alle ontvangen
+            post-it feedback van onze presentatie verwerkt:
+          </p>
+        </div>
+
+        <article class="info-card" style="margin-bottom: 1.5rem;">
+          <h3>Onze Samenwerkingsovereenkomst (Stap 1 t/m 3 met Giovanni &amp; Nick)</h3>
+          <ul class="compact-list">
+            <li><strong>Elke ochtend korte stand-up + feedback op tussenwerk:</strong> We bespraken aan het begin van elke lesdag waar iedereen stond en gaven direct eerlijke feedback op elkaars datasets en tests.</li>
+            <li><strong>Ziekte of vertraging direct melden in onze groepsapp:</strong> Niet alleen formeel op school ziekmelden, maar meteen even een appje sturen zodat de andere twee taken op het Jira-bord konden opvangen.</li>
+            <li><strong>Frustraties meteen uitspreken:</strong> We spraken af om irritaties niet twee weken op te kroppen tot het einde van de sprint, maar dezelfde dag rustig te bespreken.</li>
+          </ul>
+        </article>
+
+        <!-- De 3 foto's van onze echte ontvangen post-its -->
+        <div class="evidence-grid">
+          <figure class="evidence-card">
+            <img
+              src="assets/postit_feedback_deel1_project2.jpg"
+              alt="Foto 1 van ontvangen post-its na onze Project 2 presentatie: compliment over uitleg van modeltraining, tips over tijd bewaken en uitleg van AI-termen zoals LLM."
+            />
+            <figcaption>
+              <strong>Ontvangen Post-its (Deel 1):</strong> Compliment voor de heldere uitleg van de modeltraining, met
+              concrete tips om minder theoretisch te worden, AI-termen zoals LLM uit te leggen en de tijd strak in de gaten te houden.
+            </figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <img
+              src="assets/postit_feedback_deel2_project2.jpg"
+              alt="Foto 2 van ontvangen post-its: complimenten voor mooie portal, verzorgd product en Data at rest, plus tips over houding (handen uit zakken, minder vaak gewoon zeggen) en rolverdeling."
+            />
+            <figcaption>
+              <strong>Ontvangen Post-its (Deel 2):</strong> Positief over ons verzorgde product, <em>"Mooie portal"</em>
+              en <em>"Data at rest is goed geregeld"</em>; persoonlijke presentatietips over houding (handen uit de zakken,
+              stopwoordje <em>'gewoon'</em>) en beveiligingsonderzoek.
+            </figcaption>
+          </figure>
+
+          <figure class="evidence-card">
+            <img
+              src="assets/postit_feedback_deel3_project2.jpg"
+              alt="Foto 3 van ontvangen post-its: complimenten over verdeling van de presentatie, goede antwoorden op vragen en duidelijke infographic, met tip om highlights vooraf te kiezen."
+            />
+            <figcaption>
+              <strong>Ontvangen Post-its (Deel 3):</strong> <em>"Mooie en duidelijke infographic"</em>, <em>"Goede antwoorden
+              op vragen"</em> en de slimme tip om vooraf de belangrijkste highlights te selecteren voor de tribe-showcase.
+            </figcaption>
+          </figure>
+        </div>
+
+        <h3>Hoe ik deze post-its concreet heb omgezet in verbeteringen op deze website:</h3>
+        <div class="postit-grid">
+          <div class="postit-note blue">
+            <strong>Feedback:</strong> <em>"Meer uitleg over AI termen als LLM"</em> &amp; <em>"uitleg over de beroepsrol is wat technisch"</em><br />
+            <strong>Mijn actie:</strong> Jargon-uitleg knop rechtsboven én klikbare begrippen toegevoegd in gewone taal.
+          </div>
+          <div class="postit-note green">
+            <strong>Feedback:</strong> <em>"Te veel theoretische info"</em> &amp; <em>"nadenken over de highlights die je wilt belichten"</em><br />
+            <strong>Mijn actie:</strong> Bovenaan 4 korte KPI-highlights en een strak 8-kaartenoverzicht geplaatst; diepgang zit netjes achter tabbladen.
+          </div>
+          <div class="postit-note">
+            <strong>Feedback:</strong> <em>"Nog wat meer onderzoek nodig over beveiliging"</em> (naast compliment over Data at rest)<br />
+            <strong>Mijn actie:</strong> Security uitgebreid met <em>data poisoning</em>-preventie én mijn 75% Wildcard-drempel tegen foutieve beslissingen.
+          </div>
+          <div class="postit-note pink">
+            <strong>Feedback:</strong> <em>"Handen in zakken lijkt raar / zegt te vaak 'gewoon'"</em> &amp; <em>"Tijd in de gaten houden"</em><br />
+            <strong>Mijn actie:</strong> Meegenomen als persoonlijk spreekdoel voor Sprint 3: open houding, steekwoordenkaartje en timer per spreker.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER MET BRONNENLIJST EN GEGEVENS
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Over dit eindproduct</h3>
+        <p>
+          Gemaakt door <strong>Harsha Vardhan Kanaparthi</strong> voor
+          <strong>Open-ICT Semester 1 &ndash; Project 2: Beroepsrollen (Onderdeel A &amp; B)</strong>,
+          Hogeschool Utrecht (september 2026). Handgeschreven in HTML5, CSS3 en Vanilla JavaScript.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Geraadpleegde bronnen (selectie)</h3>
+        <ul class="compact-list">
+          <li>Hogeschool Utrecht Open-ICT (2026) &ndash; <em>Project 2: Beroepsrollen onderdeel A &amp; AI ontdekken: kat of hond?</em> (LEF).</li>
+          <li>Liner.ai Documentatie &ndash; Image Classification &amp; EfficientNet Transfer Learning (<code>liner.ai</code>).</li>
+          <li>Google ML Crash Course &ndash; <em>Classification Thresholding &amp; Fairness</em> (<code>developers.google.com/machine-learning/crash-course</code>).</li>
+          <li>TensorFlow Tutorials &ndash; <em>Image Classification</em> (<code>tensorflow.org/tutorials/images/classification</code>).</li>
+          <li>Europese Commissie &ndash; <em>EU AI Act overzicht &amp; risicoklassen</em> (<code>digital-strategy.ec.europa.eu</code>).</li>
+          <li>Eigen veldonderzoek (september 2026): Interviews met DCC Cyber Reservist (Cybersec Nederland, Utrecht) en Mark (NLUUG).</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact &amp; Vervolg</h3>
+        <p>
+          Student: Harsha Vardhan Kanaparthi<br />
+          E-mail: <a href="mailto:harsha.kanaparthi20062@gmail.com">harsha.kanaparthi20062@gmail.com</a><br />
+          Team Onderdeel B: Harsha (HK), Giovanni (GL), Nick (NB)<br />
+          Jira-omgeving: <code>ai-project2.atlassian.net</code>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

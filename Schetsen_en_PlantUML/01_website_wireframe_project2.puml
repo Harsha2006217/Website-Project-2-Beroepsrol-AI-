@@ -1,0 +1,50 @@
+@startsalt
+{+
+  <b>WIREFRAME SCHETS - PROJECT 2 INTERACTIEVE INFOGRAPHIC & AI-PORTAL (HARSHA KANAPARTHI)</b>
+  ==
+  { [AI Harsha Kanaparthi - Project 2] | Infographic (A) | Stap 1-6 | Kat of Hond (B) | Jira US 1-9 | Wildcard | [Jargon: AAN] | [Donker] | [Print] }
+  ==
+  {
+    {
+      <b>HERO: Jouw toekomst als AI Engineer & praktijkproef: Kat of Hond?</b>
+      Onderdeel A (Individueel onderzoek) + Onderdeel B (Team: Harsha, Giovanni, Nick)
+      { [Bekijk de 8 Infographic-blokken] | [Test onze Kat/Hond-resultaten] }
+    } | {
+      <b>Mijn 4 belangrijkste highlights (KPI-kaarten)</b>
+      { [150+ foto's dataset] | [100% val vs 50/50 twijfel] }
+      { [90% naar 98% zekerheid] | [75% Wildcard drempel] }
+    }
+  }
+  ==
+  <b>ONDERDEEL A: Beroepsrol Infographic [Artificial Intelligence Engineer] (8 Blokken)</b>
+  {
+    [1. Job titles: AI/ML/CV/GenAI] | [2. Most wanted skills: Python, PyTorch, Git]
+    [3. Skills Roadmap: Jaar 1 t/m 4] | [4. Baby Roadmap: 0-2 jaar]
+    [5. Wat maak je? CV, RAG, Security] | [6. Week in het leven: ma t/m vr]
+    [7. Opdracht: Liner.ai Kat/Hond] | [8. Wildcard: Energie, Bias, 80%-regel]
+  }
+  ==
+  <b>ONDERDEEL A VERDIEPING: Desk- & Fieldresearch (Toegankelijke Tabbladen)</b>
+  {/ <b>Stap 1: LEF</b> | Stap 2: 5 Vacatures | Stap 3: EU AI Act | Stap 4: LinkedIn | Stap 5: AI-Gilde | Stap 6: Interviews DCC & Mark }
+  Uitgewerkte vergelijkingstabellen en samenvattingen per onderzoeksstap (rustig ingedeeld tegen tekst-overload).
+  ==
+  <b>ONDERDEEL B: Liner.ai Experiment (EfficientNet) + Interactieve Simulator</b>
+  { [Bewijs 1: Loss 0.44 naar 0.00] | [Bewijs 2: 100% Validatie] | [Bewijs 3: Test 6 AI-Hybrides] }
+  {
+    {
+      <b>Kies testscenario (Test 1 t/m 6 + Wildcard):</b>
+      { [Test 6a: AI-hybride 60/35] | [Test 5b: Hond+Kat 50/50] }
+      Zekerheidsdrempel slider: (========o==) 75%
+    } | {
+      <b>Live Modeluitvoer & Wildcard Filter:</b>
+      Hond: 60%  Kat: 35%  Overig: 5%
+      [WAARSCHUWING: Onder 75% drempel -> Handmatig controleren!]
+    }
+  }
+  ==
+  <b>JIRA BORD (AI-1 t/m AI-9) + WILDCARD USER STORY (Python Drempelcode) + 5 ICT-WAARDEN</b>
+  { [Duurzame energie] | [Toegankelijkheid 200% zoom] | [Verantwoorde hardware] | [Privacy AVG] | [Security Data at Rest] }
+  ==
+  <b>TEAM OVEREENKOMST (HK, GL, NB) & VERWERKTE POST-IT FEEDBACK + BRONNENFOOTER</b>
+}
+@endsalt
